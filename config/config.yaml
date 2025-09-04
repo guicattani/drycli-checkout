@@ -1,0 +1,11 @@
+version: 0.0.1
+items:
+  GR1:
+    name: Green tea
+    price_in_cents: 311
+  SR1:
+    name: Strawberry
+    price_in_cents: 500
+  CF1:
+    name: Coffee
+    price_in_cents: 1123
