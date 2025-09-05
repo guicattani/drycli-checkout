@@ -8,7 +8,7 @@ module Checkout
       argument :items, type: :array, required: true, desc: 'Combination of items to calculate'
 
       def call(items:, **)
-        pp items
+        pp Item.find(items.first)
       end
     end
   end

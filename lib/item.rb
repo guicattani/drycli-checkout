@@ -3,12 +3,13 @@
 class Item
   attr_reader :name, :price_in_cents
 
-  def initialize(name, price_in_cents)
-    @name = name
-    @price_in_cents = price_in_cents
+  def initialize(cfg)
+    @name = cfg['name']
+    @price_in_cents = cfg['price_in_cents']
   end
 
-  def find(code)
-    new(Config.item(code))
+  def self.find(code)
+    cfg = Config.item(code)
+    new(cfg) if cfg
   end
 end

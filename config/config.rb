@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require 'singleton'
+require 'psych'
+
 class Config
   include Singleton
+
   def self.item(code)
     instance.item(code)
   end
@@ -22,9 +26,9 @@ class Config
 
   def config
     if ENV['environment'] == 'production'
-      @config ||= Psych.load_file('config.yaml')
+      @config ||= Psych.load_file('config/config.yaml')
     else
-      Psych.load_file('config.yaml')
+      Psych.load_file('config/config.yaml')
     end
   end
 end

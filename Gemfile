@@ -13,7 +13,9 @@ gem 'dotenv'
 gem 'dry-cli'
 gem 'logger'
 gem 'rake'
+gem 'simplecov'
 gem 'singleton'
+gem 'zeitwerk'
 
 group :development do
   gem 'rubocop'
