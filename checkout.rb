@@ -3,6 +3,7 @@
 
 require 'bundler/setup'
 require 'dry/cli'
+require_relative 'config/utils/logger'
 require_relative 'config/initializers/zeitwerk'
 
 module Checkout
