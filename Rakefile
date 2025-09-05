@@ -26,4 +26,13 @@ task :run, [:args] do |_t, args|
   ruby "main.rb #{cmd_args}"
 end
 
+desc 'IRB Console'
+task :console do
+  require_relative 'config/initializers/zeitwerk'
+
+  Zeitwerk::Loader.eager_load_all
+  require 'pry'
+  Pry.start
+end
+
 task default: :spec

@@ -18,6 +18,8 @@ gem 'singleton'
 gem 'zeitwerk'
 
 group :development do
+  gem 'pry'
+  gem 'reline' # Used by pry
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rake'

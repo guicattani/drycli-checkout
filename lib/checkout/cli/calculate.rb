@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'dry/cli'
 module Checkout
   module CLI
     class Calculate < Dry::CLI::Command
