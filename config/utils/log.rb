@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'logger'
+require 'singleton'
 
 module Utils
   class Log
