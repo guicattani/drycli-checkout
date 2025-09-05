@@ -16,6 +16,14 @@ RSpecWatcher.configure do
     modified + added
   end
 
+  watch 'app', only: /\.rb\z/ do |modified, added, removed|
+    (modified + added + removed).map do |path|
+      file_path = Pathname.new(path).relative_path_from(File.expand_path(path, Dir.pwd))
+      spec_path = file_path.sub(/.rb\z/, '_spec.rb')
+      "#{Dir.pwd}/spec/#{spec_path}"
+    end
+  end
+
   watch 'lib', only: /\.rb\z/ do |modified, added, removed|
     (modified + added + removed).map do |path|
       file_path = Pathname.new(path).relative_path_from(File.expand_path(path, Dir.pwd))

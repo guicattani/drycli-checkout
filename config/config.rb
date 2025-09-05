@@ -11,7 +11,7 @@ class Config
   end
 
   def item(code)
-    config['items'][code]
+    config[:items][code.to_sym]
   end
 
   def self.version
@@ -19,16 +19,16 @@ class Config
   end
 
   def version
-    config['version']
+    config[:version]
   end
 
   private
 
   def config
     if ENV['environment'] == 'production'
-      @config ||= Psych.load_file('config/config.yaml')
+      @config ||= Psych.safe_load('config/config.yaml', aliases: true, symbolize_names: true)
     else
-      Psych.load_file('config/config.yaml')
+      Psych.load_file('config/config.yaml', aliases: true, symbolize_names: true) # no cache
     end
   end
 end

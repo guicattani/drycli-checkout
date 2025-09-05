@@ -1,11 +1,40 @@
+################################ Promotions
+define: &default_promotion
+  enabled: true
+  applies_to_all: true
+
+define: &buy_one_get_one
+  <<: *default_promotion
+  min_count: 2
+  discount: 0.5
+  applies_to_all: false
+define: &ten_percent_off
+  <<: *default_promotion
+  min_count: 3
+  discount: 0.1
+define: &thirty_percent_off
+  <<: *default_promotion
+  min_count: 3
+  discount: 0.33333
+
+################################ Version
 version: 0.0.1
+
+############################### Items
 items:
   GR1:
     name: Green tea
     price_in_cents: 311
+    promotion:
+      <<: *buy_one_get_one
   SR1:
     name: Strawberry
     price_in_cents: 500
+    promotion:
+      <<: *ten_percent_off
   CF1:
     name: Coffee
     price_in_cents: 1123
+    promotion:
+      <<: *thirty_percent_off
+
