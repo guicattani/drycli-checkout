@@ -9,7 +9,16 @@ module Checkout
       argument :items, type: :array, required: true, desc: 'Combination of items to calculate'
 
       def call(items:, **)
-        pp Item.find(items.first)
+        return if items.empty?
+
+        mapped_items = items.filter_map do |i|
+          item = Item.find(i)
+          Utils::Log.error("#{i} not found") unless item
+          item
+        end
+        sum = mapped_items.sum(&:price_in_cents)
+
+        format('£%0.02f', sum / 100.0)
       end
     end
   end

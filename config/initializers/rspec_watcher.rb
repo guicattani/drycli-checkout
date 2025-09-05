@@ -6,7 +6,7 @@ require 'zeitwerk'
 RSpecWatcher.configure do
   self.path_inferrer = ->(path) { File.expand_path(path, Dir.pwd) }
 
-  self.reloader = -> {
+  self.reloader = lambda {
     Zeitwerk::Registry.loaders.each(&:reload)
     RSpec.clear_examples if defined?(RSpec)
     RSpec.world.reset if defined?(RSpec) && RSpec.world.respond_to?(:reset)

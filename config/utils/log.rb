@@ -6,7 +6,7 @@ module Utils
   class Log
     include Singleton
 
-    LOG_DIR = "#{Dir.pwd}/logs"
+    LOG_DIR = "#{Dir.pwd}/logs".freeze
 
     def initialize
       @today = Date.today
@@ -34,7 +34,7 @@ module Utils
     private
 
     def new_logger
-      Dir.mkdir(LOG_DIR) unless File.exist?(LOG_DIR)
+      FileUtils.mkdir_p(LOG_DIR)
       @logger = Logger.new("#{LOG_DIR}/#{Date.today}", File::WRONLY | File::APPEND | File::CREAT)
     end
 

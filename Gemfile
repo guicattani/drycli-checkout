@@ -28,6 +28,7 @@ end
 
 group :test do
   gem 'listen'
+  gem 'pry-byebug'
   gem 'rspec'
   gem 'rspec-watcher'
 end
